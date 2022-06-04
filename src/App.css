@@ -15,13 +15,11 @@ nav {
 	align-items: center;
 	justify-items: center;
 	margin-top: 2%;
+	border: 1px solid black;
 
 }
 
-nav h2 {
-	margin-left: 7em;
-	
-}
+
 
 nav a{
 	text-decoration: none;

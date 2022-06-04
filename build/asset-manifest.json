@@ -1,5 +1,5 @@
 {
-  "main.css": "/static/css/main.6e0fed3c.chunk.css",
+  "main.css": "/static/css/main.de293f4d.chunk.css",
   "main.js": "/static/js/main.df0fca1e.chunk.js",
   "main.js.map": "/static/js/main.df0fca1e.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
@@ -7,8 +7,8 @@
   "static/js/2.85f82a14.chunk.js": "/static/js/2.85f82a14.chunk.js",
   "static/js/2.85f82a14.chunk.js.map": "/static/js/2.85f82a14.chunk.js.map",
   "index.html": "/index.html",
-  "precache-manifest.d7ad03e6e32ce8dd0535259d207531bd.js": "/precache-manifest.d7ad03e6e32ce8dd0535259d207531bd.js",
+  "precache-manifest.0b3a0280b6068e49d8617189cd335020.js": "/precache-manifest.0b3a0280b6068e49d8617189cd335020.js",
   "service-worker.js": "/service-worker.js",
-  "static/css/main.6e0fed3c.chunk.css.map": "/static/css/main.6e0fed3c.chunk.css.map",
+  "static/css/main.de293f4d.chunk.css.map": "/static/css/main.de293f4d.chunk.css.map",
   "static/media/profile-picture.png": "/static/media/profile-picture.e89d2579.png"
 }
