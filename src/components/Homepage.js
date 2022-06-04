@@ -3,7 +3,7 @@ import photos from '../data'
 import styled from 'styled-components'
 
 const Homepage = () => {
-	const Wrapper = styled.div`
+  const Wrapper = styled.div`
 
 	margin-top: 5%;
 	display: flex;
@@ -26,7 +26,7 @@ const Homepage = () => {
 	}
 	`
 
-	const Image = styled.img`
+  const Image = styled.img`
 	   max-width: 100%;
 		 max-height: auto;
 		 height: 100%;
@@ -41,7 +41,7 @@ const Homepage = () => {
 		 
 	`
 
-	const ImageContainer = styled.div`
+  const ImageContainer = styled.div`
    
 	  display: flex;
 		flex-direction: column;
@@ -66,25 +66,25 @@ const Homepage = () => {
 	
 	`
 
-	const ImageTitle = styled.p`
+  const ImageTitle = styled.p`
 	font-weight: 500;
   
 	color: orangered;
 	
 	`
 
+  
+  return (
+    <Wrapper>
+      {photos.map((photo) =>
+        <ImageContainer>
+          <Image src={photo.url} alt={photo.title} />
+          <ImageTitle>{photo.title}</ImageTitle>
+        </ImageContainer>
+      )}
+    </Wrapper>
 
-	return (
-		<Wrapper>
-		{photos.map((photo) => 
-			<ImageContainer>
-			<Image src={photo.url} alt={photo.title} />
-			<ImageTitle>{photo.title}</ImageTitle>
-			</ImageContainer>
-		)}
-		</Wrapper>
-
-	)
+  )
 }
 
 export default Homepage

@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import './App.css'
 import About from './components/About'
+import React from 'react'
 import Contact from './components/Contact'
 import Container from './UI/Container'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
