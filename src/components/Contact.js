@@ -45,21 +45,44 @@ const Header = styled.header`
 `
 
 const Contact = () => {
+  const [name, setName] = React.useState('')
+  const [email, setEmail] = React.useState('')
+  const [message, setMessage] = React.useState('')
+
+  function encode (data) {
+    return Object.keys(data)
+      .map(
+        (key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])
+      )
+      .join('&')
+  }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+    window.fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', name, email, message })
+    })
+      .then(() => window.alert('Message sent!'))
+      .catch((error) => window.alert(error))
+  }
+
   return (
     <Container>
       <Header>
         <h3>Get in Touch</h3>
         <p>If you have any questions about my work or anything in general, please fill out the form below.</p>
       </Header>
-      <Form name='contact' method='POST' data-netlify='true'>
+      <Form name='contact' method='POST' data-netlify='true' onSubmit={handleSubmit}>
         <p>
-          <label><input type='text' name='name' placeholder='Name' /></label>
+          <label><input type='text' name='name' placeholder='Name' onChange={(e) => setName(e.target.value)} /></label>
         </p>
         <p>
-          <label><input type='email' name='email' placeholder='Your email address' /></label>
+          <label><input type='email' name='email' placeholder='Your email address' onChange={(e) => setEmail(e.target.value)} /></label>
         </p>
         <p>
-          <label><textarea name='message' placeholder='Message' /></label>
+          <label><textarea name='message' placeholder='Message' onChange={(e) => setMessage(e.target.value)} /></label>
         </p>
         <p>
           <button type='submit'>Send</button>
