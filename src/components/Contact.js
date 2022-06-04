@@ -66,6 +66,10 @@ const Contact = () => {
     })
       .then(() => window.alert('Message sent!'))
       .catch((error) => window.alert(error))
+		
+			setEmail('')
+			setMessage('')
+			setName('')
   }
 
   return (
@@ -76,13 +80,13 @@ const Contact = () => {
       </Header>
       <Form name='contact' method='POST' data-netlify='true' onSubmit={handleSubmit}>
         <p>
-          <label><input type='text' name='name' placeholder='Name' onChange={(e) => setName(e.target.value)} /></label>
+          <label><input type='text' name='name' placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} /></label>
         </p>
         <p>
-          <label><input type='email' name='email' placeholder='Your email address' onChange={(e) => setEmail(e.target.value)} /></label>
+          <label><input type='email' name='email' placeholder='Your email address' value={email} onChange={(e) => setEmail(e.target.value)} /></label>
         </p>
         <p>
-          <label><textarea name='message' placeholder='Message' onChange={(e) => setMessage(e.target.value)} /></label>
+          <label><textarea name='message' placeholder='Message' value={message} onChange={(e) => setMessage(e.target.value)} /></label>
         </p>
         <p>
           <button type='submit'>Send</button>
