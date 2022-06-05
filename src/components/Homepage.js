@@ -1,30 +1,45 @@
-import React from 'react'
-import photos from '../data'
+import React, { useState, useEffect } from 'react'
+// import photos from '../data'
+import { collection, getDocs } from 'firebase/firestore'
 import styled from 'styled-components'
+import { Timeline } from 'react-twitter-widgets'
+import { db } from '../firebase/firebase-config'
 
 const Homepage = () => {
-  const Wrapper = styled.div`
-
-	margin-top: 5%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-
-
-
-
-	@media (max-width: 825px) {
-		flex-wrap: nowrap;
-		flex-direction: column;
-		justify-content: center;
-		width: 22em;
-		column-gap: 3em;
-		align-content: center;
-		margin: 0 auto;
-		margin-top: 3em;
-		
-	}
+  const Container = styled.div`
+	   display: flex;
+		 
 	`
+
+  const TimeLineContainer = styled.div`
+	   margin-top: 7%;
+		 height: 100%;
+		 width: 17%;
+		 box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+		 
+	`
+
+  const Wrapper = styled.div`
+//	width: 80%;
+  margin-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+
+
+
+  @media (max-width: 825px) {
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    width: 22em;
+    column-gap: 3em;
+    align-content: center;
+    margin: 0 auto;
+    margin-top: 3em;
+  }
+  `
 
   const Image = styled.img`
 	   max-width: 100%;
@@ -34,12 +49,10 @@ const Homepage = () => {
 		 margin: 3%;
 		 box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
-		 @media (max-width: 825px) {
-	      margin-top: 5%;
-	}
-
-		 
-	`
+     @media (max-width: 825px) {
+      margin-top: 5%;
+  }
+  `
 
   const ImageContainer = styled.div`
    
@@ -70,19 +83,47 @@ const Homepage = () => {
 	font-weight: 500;
   
 	color: orangered;
-	
+
 	`
 
-  
+  const [photos, setPhotos] = useState([])
+
+  useEffect(() => {
+    fetchPhotos()
+  }, [])
+
+  const fetchPhotos = () => {
+    const photosCollection = collection(db, 'photos')
+    getDocs(photosCollection).then(response => {
+      const photosArray = []
+      response.docs.forEach((photo) => {
+        photosArray.push({ ...photo.data(), id: photo.id })
+      })
+			 setPhotos(photosArray)
+    }).catch(error => console.log(error.message))
+  }
   return (
-    <Wrapper>
-      {photos.map((photo) =>
-        <ImageContainer>
-          <Image src={photo.url} alt={photo.title} />
-          <ImageTitle>{photo.title}</ImageTitle>
-        </ImageContainer>
-      )}
-    </Wrapper>
+    <Container>
+      {/* <TimeLineContainer>
+        <Timeline
+          dataSource={{
+            sourceType: 'profile',
+            screenName: 'carlotheace'
+          }}
+          options={{
+            height: '600'
+          }}
+        />
+      </TimeLineContainer> */}
+      <Wrapper>
+        {photos.map((photo) =>
+          <ImageContainer key={photo.id}>
+            <Image src={photo.url} alt={photo.title} />
+            <ImageTitle>{photo.title}</ImageTitle>
+          </ImageContainer>
+        )}
+      </Wrapper>
+    </Container>
 
   )
 }

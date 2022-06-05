@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 const Navbar = () => {
-
   return (
     <nav>
       <h2><Link to='/'>Carlo</Link></h2>

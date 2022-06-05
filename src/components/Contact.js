@@ -72,6 +72,8 @@ const Contact = () => {
 			setName('')
   }
 
+	
+
   return (
     <Container>
       <Header>
