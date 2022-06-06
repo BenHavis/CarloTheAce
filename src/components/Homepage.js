@@ -2,20 +2,11 @@ import React, { useState, useEffect } from 'react'
 // import photos from '../data'
 import { collection, getDocs } from 'firebase/firestore'
 import styled from 'styled-components'
-import { Timeline } from 'react-twitter-widgets'
 import { db } from '../firebase/firebase-config'
 
 const Homepage = () => {
   const Container = styled.div`
 	   display: flex;
-		 
-	`
-
-  const TimeLineContainer = styled.div`
-	   margin-top: 7%;
-		 height: 100%;
-		 width: 17%;
-		 box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 		 
 	`
 
@@ -104,17 +95,6 @@ const Homepage = () => {
   }
   return (
     <Container>
-      {/* <TimeLineContainer>
-        <Timeline
-          dataSource={{
-            sourceType: 'profile',
-            screenName: 'carlotheace'
-          }}
-          options={{
-            height: '600'
-          }}
-        />
-      </TimeLineContainer> */}
       <Wrapper>
         {photos.map((photo) =>
           <ImageContainer key={photo.id}>
